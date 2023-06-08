@@ -1,10 +1,18 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+    const {crateUser} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        crateUser( data.email, data.password)
+        .then(result => {
+            const LoggedUser = result.user;
+            console.log(LoggedUser)
+        })
+        .catch(error =>console.log(error))
     };
 
     return (
@@ -44,7 +52,7 @@ const Login = () => {
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
-                    <p>create a new account? <Link to="/register"> <u className="text-primary">Register</u></Link> </p>
+                    <p className="mb-5 text-center">create a new account? <Link to="/register"> <u className="text-primary">Register</u></Link> </p>
                 </div>
             </div>
         </div>

@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 const Register = () => {
+    const {signIn} = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        signIn( data.email, data.password)
+        .then(result => {
+            const LoggedUser = result.user;
+            console.log(LoggedUser)
+        })
+        .catch(error =>console.log(error))
     };
 
     return (
@@ -55,7 +62,7 @@ const Register = () => {
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
-                    <p>already have an account? please <Link to="/login"> <u className="text-primary">login</u></Link> </p>
+                    <p className="mb-5 text-center">already have an account? please <Link to="/login"> <u className="text-primary">login</u></Link> </p>
                 </div>
             </div>
         </div>
