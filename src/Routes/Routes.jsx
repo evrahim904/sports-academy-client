@@ -5,6 +5,8 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Classes from "../Pages/Classes/Classes";
+import Private from "./Private";
 
 
 
@@ -25,6 +27,10 @@ import Register from "../Pages/Register/Register";
         {
           path:'register',
           element:<Register></Register>
+        },
+        {
+          path:'classes',
+          element: <Private> <Classes></Classes> </Private>
         }
       ]
     },

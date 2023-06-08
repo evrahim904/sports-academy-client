@@ -1,16 +1,18 @@
-import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const {crateUser} = useContext(AuthContext)
+    const {signIn} = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        crateUser( data.email, data.password)
+        signIn( data.email, data.password)
         .then(result => {
             const LoggedUser = result.user;
             console.log(LoggedUser)
+            Swal.fire('Login successfully')
         })
         .catch(error =>console.log(error))
     };
