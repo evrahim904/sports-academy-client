@@ -1,14 +1,26 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/sport-35476.png'
+import useAuth from '../../../Hooks/useAuth';
+import useCart from '../../../Hooks/useCarts';
 const Navbar = () => {
+    const {user,logOut} = useAuth();
+    const [cart] = useCart()
+    const handleLogOut = () =>{
+        logOut()
+        .then(()=>{})
+        .catch(error =>console.log(error))
+    }
     
     const navInfo =
         <>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/classes">Classes</Link></li>
             <li><Link to="/instructors">Instructors</Link></li>
-            <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/dashboard/selectedClass">Dashboard {cart.length}</Link></li>
+
+            {user?<button onClick={handleLogOut} className="btn btn-active">Logout</button>
+:
+            <li><Link to="/login">Login</Link></li>}
         </>
     return (
         <div className="navbar bg-base-100">

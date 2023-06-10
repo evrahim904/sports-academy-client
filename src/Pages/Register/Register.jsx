@@ -1,15 +1,47 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import SocialLogIn from "../../Components/SocialLogIn/SocialLogIn";
 const Register = () => {
-    const {createUser} = useAuth()
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {createUser,updateUserProfile} = useAuth()
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
+    const navigate = useNavigate()
     const onSubmit = data => {
         createUser( data.email, data.password)
         .then(result => {
             const LoggedUser = result.user;
             console.log(LoggedUser)
+            updateUserProfile(data.name, data.photo)
+            .then(()=>{
+                const saveUser = {name:data.name, email: data.email, image: data.photo}
+               fetch('http://localhost:5000/users',{
+                method: 'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(saveUser)
+               })
+               .then(res => res.json())
+               .then(data =>{
+                if(data.insertedId){
+                    reset()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Registration successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+               })
+
+
+                
+            })
+            navigate('/')
         })
+
         .catch(error =>console.log(error))
     };
 
@@ -58,11 +90,28 @@ const Register = () => {
                             {errors.password?.type === 'required' && <p className="text-orange-500">cannot submit empty password </p>}
                             {errors.password?.type === 'pattern' && <p className="text-orange-500">password must have one uppercase and one special characters</p>}
                         </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
+                            </label>
+                            <input type="password" {...register("password",
+                                {
+                                    required: true,
+                                    minLength: 6,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
+
+
+                                })} placeholder="Confirm Password" className="input input-bordered" />
+                            {errors.password?.type === 'minLength' && <p className="text-orange-500">password is less than 6 characters</p>}
+                            {errors.password?.type === 'required' && <p className="text-orange-500">cannot submit empty password </p>}
+                            {errors.password?.type === 'pattern' && <p className="text-orange-500">password must have one uppercase and one special characters</p>}
+                        </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
                     <p className="mb-5 text-center">already have an account? please <Link to="/login"> <u className="text-primary">login</u></Link> </p>
+                    <SocialLogIn></SocialLogIn>
                 </div>
             </div>
         </div>

@@ -7,6 +7,10 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Classes from "../Pages/Classes/Classes";
 import Private from "./Private";
+import Instructors from "../Pages/Instructors/Instructors";
+import Dashboard from "../Layout/Dashboard";
+import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -30,8 +34,26 @@ import Private from "./Private";
         },
         {
           path:'classes',
-          element: <Private> <Classes></Classes> </Private>
+          element:  <Classes></Classes>
+        },
+        {
+          path:'instructors',
+          element:<Instructors></Instructors>
         }
       ]
     },
+    {
+      path:'/dashboard',
+      element:<Dashboard></Dashboard>,
+      children:[
+        {
+          path:'selectedClass',
+          element:<SelectedClass></SelectedClass>
+        },
+        {
+          path: 'allUsers',
+          element:<AllUsers></AllUsers>
+        }
+      ]
+    }
   ]);

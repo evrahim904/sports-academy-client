@@ -1,19 +1,31 @@
 
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialLogIn from "../../Components/SocialLogIn/SocialLogIn";
 
 const Login = () => {
     const {signIn} = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const location = useLocation();
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/"
     const onSubmit = data => {
         signIn( data.email, data.password)
         .then(result => {
             const LoggedUser = result.user;
             console.log(LoggedUser)
-            Swal.fire('Login successfully')
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Login successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            navigate(from, {replace:true})
         })
+        
         .catch(error =>console.log(error))
     };
 
@@ -55,6 +67,7 @@ const Login = () => {
                         </div>
                     </form>
                     <p className="mb-5 text-center">create a new account? <Link to="/register"> <u className="text-primary">Register</u></Link> </p>
+                    <SocialLogIn></SocialLogIn>
                 </div>
             </div>
         </div>
