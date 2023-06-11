@@ -8,7 +8,7 @@ const AddItem = () => {
     const [axiosSecure] = useAxiosSecure()
     const onSubmit = data => {
         console.log(data)
-        const newItem = {name: data.name, image: data.image ,instructorName: data.instructor, availableSeats: data.seats, price: data.price }
+        const newItem = {name: data.name, image: data.image ,instructorName: data.instructor, availableSeats: parseFloat(data.seats), price: parseFloat(data.price), status: data.status }
         axiosSecure.post('/classes', newItem)
         .then(data => {
             console.log('item', data.data)

@@ -13,6 +13,9 @@ import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import AdminRoute from "./AdminRoute";
+import MyClasses from "../Pages/Dashboard/MyClassess/MyClasses";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 
@@ -21,6 +24,7 @@ import AdminRoute from "./AdminRoute";
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
@@ -59,6 +63,14 @@ import AdminRoute from "./AdminRoute";
         {
           path:'addItem',
           element: <AddItem></AddItem>
+        },
+        {
+          path: 'myClasses',
+          element:<MyClasses></MyClasses>
+        },
+        {
+          path: 'payment',
+          element:<Payment></Payment>
         }
       ]
     }

@@ -3,7 +3,7 @@ import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
 
 const Dashboard = () => {
-    // todo 
+  
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     return (
@@ -27,7 +27,7 @@ const Dashboard = () => {
                         isInstructor && 
                         <> <li><Link to="/"> Home</Link></li>
                         <li><Link to="/dashboard/addItem">Add a Class</Link></li>
-                        <li><Link to="/dashboard/instructorCLasses">My Classes</Link></li>
+                        <li><Link to="/dashboard/myClasses">My Classes</Link></li>
                         <li><Link to="/dashboard/enrolled">Total Enrolled Students</Link></li>
                         
                         </> 

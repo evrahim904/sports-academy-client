@@ -3,24 +3,30 @@ import logo from '../../../assets/sport-35476.png'
 import useAuth from '../../../Hooks/useAuth';
 import useCart from '../../../Hooks/useCarts';
 const Navbar = () => {
-    const {user,logOut} = useAuth();
+    const { user, logOut } = useAuth();
     const [cart] = useCart()
-    const handleLogOut = () =>{
+    const handleLogOut = () => {
         logOut()
-        .then(()=>{})
-        .catch(error =>console.log(error))
+            .then(() => { })
+            .catch(error => console.log(error))
     }
-    
+
     const navInfo =
         <>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/classes">Classes</Link></li>
             <li><Link to="/instructors">Instructors</Link></li>
-            <li><Link to="/dashboard">Dashboard {cart.length}</Link></li>
 
-            {user?<button onClick={handleLogOut} className="btn btn-active">Logout</button>
-:
-            <li><Link to="/login">Login</Link></li>}
+
+            {
+                user ? <>
+                    < li > <Link to="/dashboard">Dashboard {cart.length}</Link></li>
+                    <button onClick={handleLogOut} className="btn btn-active">Logout</button>
+
+                </>
+                    :
+                    <li><Link to="/login">Login</Link></li>
+            }
         </>
     return (
         <div className="navbar bg-base-100">
@@ -30,7 +36,7 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                      {navInfo}
+                        {navInfo}
                     </ul>
                 </div>
                 <img style={{ width: '70px' }} src={logo} alt="" />
@@ -38,7 +44,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                   {navInfo}
+                    {navInfo}
                 </ul>
             </div>
             <div className="navbar-end">
