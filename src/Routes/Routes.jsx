@@ -11,6 +11,8 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Dashboard from "../Layout/Dashboard";
 import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AddItem from "../Pages/Dashboard/AddItem/AddItem";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -44,7 +46,7 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
     },
     {
       path:'/dashboard',
-      element:<Dashboard></Dashboard>,
+      element:<Private><Dashboard></Dashboard></Private>,
       children:[
         {
           path:'selectedClass',
@@ -53,6 +55,10 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
         {
           path: 'allUsers',
           element:<AllUsers></AllUsers>
+        },
+        {
+          path:'addItem',
+          element: <AddItem></AddItem>
         }
       ]
     }

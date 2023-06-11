@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AllUsers = () => {
+  const [axiosSecure] = useAxiosSecure()
     const {data: users = [], refetch} = useQuery(['users'], async ()=>{
-        const res = await fetch('http://localhost:5000/users')
-        return res.json()
+        const res = await axiosSecure.get('/users')
+        return res.data;
     })
 
     const handleMakeAdmin = user =>{
@@ -24,6 +26,24 @@ const AllUsers = () => {
                   })
             }
         })
+    }
+    const handleMakeInstructor = user=>{
+      fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+        method: 'PATCH',
+    })
+    .then(res => res.json())
+    .then(data =>{
+        if(data.modifiedCount){
+            refetch()
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `${user.name} is now instructor`,
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
+    })
     }
     return (
         <div className="w-full">
@@ -65,7 +85,7 @@ const AllUsers = () => {
         <div className="flex items-center space-x-3">
             
           <button onClick={()=>handleMakeAdmin(user)} disabled = {user.role === 'admin'} className="btn btn-ghost btn-xs me-2 bg-orange-400">Make Admin</button>
-          <button disabled = {user.role === 'admin'|| user.role === 'instructor'} className="btn btn-ghost btn-xs bg-orange-400">Make Instructor</button>
+          <button onClick={()=>handleMakeInstructor(user)}  disabled = {user.role === 'admin'|| user.role === 'instructor'} className="btn btn-ghost btn-xs bg-orange-400">Make Instructor</button>
         
           </div>
         </td>
