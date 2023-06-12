@@ -19,13 +19,9 @@ const Navbar = () => {
 
 
             {
-                user ? <>
-                    < li > <Link to="/dashboard">Dashboard {cart.length}</Link></li>
-                    <button onClick={handleLogOut} className="btn btn-active">Logout</button>
+                user && 
+                    < li > <Link to="/dashboard">Dashboard</Link></li>
 
-                </>
-                    :
-                    <li><Link to="/login">Login</Link></li>
             }
         </>
     return (
@@ -47,9 +43,19 @@ const Navbar = () => {
                     {navInfo}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
-            </div>
+            {user ?
+                <div className=" navbar-end" >
+
+                    <Link><button className='me-4 btn btn-neutral btn-sm' onClick={handleLogOut}>logout</button>
+                    </Link>
+                    <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
+                        <div className=" rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-10 " >
+                            <img  src={user.photoURL} />
+                        </div>
+                    </div>
+                </div>
+                : <Link className=" navbar-end" to="/login"><button className='btn btn-ghost btn-sm '>Login</button></Link>
+            }
         </div>
     );
 };

@@ -49,7 +49,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
+                            <input  type="email" {...register("email", { required: true })} placeholder="email" className="input input-bordered " />
                             {errors.email && <span
                                 className="text-orange-500">cannot submit empty email </span>}
 
@@ -65,7 +65,7 @@ const Login = () => {
                                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
 
 
-                                })} placeholder="password" className="input input-bordered" />
+                                })} placeholder="password" className="input input-bordered " />
                             {showPassword ? (
                                 <FaEyeSlash
                                     id="showPassword"
@@ -84,10 +84,10 @@ const Login = () => {
                             {errors.password?.type === 'pattern' && <p className="text-orange-500">password must have one uppercase and one special characters</p>}
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary" type="submit" value="Login" />
+                            <input className="btn btn-primary " type="submit" value="Login" />
                         </div>
                     </form>
-                    <p className="mb-5 text-center">create a new account? <Link to="/register"> <u className="text-primary">Register</u></Link> </p>
+                    <p className="mb-5 text-center ">create a new account? <Link to="/register"> <u className="text-primary ">Register</u></Link> </p>
                     <SocialLogIn></SocialLogIn>
                 </div>
             </div>

@@ -16,6 +16,7 @@ import AdminRoute from "./AdminRoute";
 import MyClasses from "../Pages/Dashboard/MyClassess/MyClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
 
 
 
@@ -40,7 +41,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
         },
         {
           path:'classes',
-          element:  <Classes></Classes>
+          element:<Classes></Classes>
         },
         {
           path:'instructors',
@@ -71,6 +72,10 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
         {
           path: 'payment/:id',
           element:<Payment></Payment>
+        },
+        {
+          path: 'enrolledClass',
+          element: <EnrolledClass></EnrolledClass>
         }
       ]
     }
