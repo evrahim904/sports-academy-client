@@ -41,8 +41,8 @@ const AllClasses = ({ allClass }) => {
                             title: 'Your item has been selected',
                             showConfirmButton: false,
                             timer: 1500
-
                         })
+                        
                         // fetch(`http://localhost:5000/classes/${item._id}`, {
                         //     method: 'PATCH',
                         // })

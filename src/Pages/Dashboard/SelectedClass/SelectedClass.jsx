@@ -80,7 +80,7 @@ const SelectedClass = () => {
        ${item.price}
       </td>
       <td>
-       <Link to="/dashboard/payment"><button className="btn btn-success btn-xs">pay</button></Link>
+       <Link to={`/dashboard/payment/${item._id}` } state={{item}}><button className="btn btn-success btn-xs">pay</button></Link>
       </td>
       <th>
         <button onClick={()=> handleDelete (item)} className="btn btn-ghost btn-sm bg-red-600"> Delete </button>

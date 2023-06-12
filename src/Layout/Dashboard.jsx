@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
+import { FaHistory, FaHome, FaPeopleArrows, FaPeopleCarry, FaUser, FaWallet } from "react-icons/fa";
 
 const Dashboard = () => {
   
@@ -20,21 +21,25 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
                      {
-                        isAdmin && <> <li><Link to="/"> Home</Link></li>
-                        <li><Link to="/dashboard/selectedClass"> Manage Classes</Link></li>
-                        <li><Link to="/dashboard/allUsers">Manage Users</Link></li></> 
+                        isAdmin && <> <li><Link to="/"><FaHome></FaHome> Home</Link></li>
+                        <li><Link to="/dashboard/selectedClass"> <FaPeopleArrows></FaPeopleArrows>  Manage Classes</Link></li>
+                        <li><Link to="/dashboard/allUsers"><FaUser></FaUser> Manage Users</Link></li></> 
                         ||
                         isInstructor && 
-                        <> <li><Link to="/"> Home</Link></li>
-                        <li><Link to="/dashboard/addItem">Add a Class</Link></li>
-                        <li><Link to="/dashboard/myClasses">My Classes</Link></li>
-                        <li><Link to="/dashboard/enrolled">Total Enrolled Students</Link></li>
+                        <> <li><Link to="/"><FaHome></FaHome> Home</Link></li>
+                        <li><Link to="/dashboard/addItem"><FaPeopleArrows></FaPeopleArrows> Add a Class</Link></li>
+                        <li><Link to="/dashboard/myClasses"> <FaPeopleCarry></FaPeopleCarry> My Classes</Link></li>
+                        <li><Link to="/dashboard/enrolled"><FaWallet></FaWallet> Total Enrolled Students</Link></li>
                         
                         </> 
+                        
                         ||
-                        <><li><Link to="/"> Home</Link></li>
-                        <li><Link to="/dashboard/selectedClass"> Selected Class</Link></li>
-                        <li><Link to="/dashboard"> My Enrolled Class</Link></li></>
+                        <><li><Link to="/"><FaHome></FaHome> Home</Link></li>
+                        <li><Link to="/dashboard/selectedClass"><FaPeopleArrows></FaPeopleArrows> Selected Class</Link></li>
+                        <li><Link to="/dashboard/enrolledClass"><FaWallet></FaWallet> My Enrolled Class</Link></li>
+                        <li><Link to="/dashboard/paymentHistory"><FaHistory></FaHistory> Payment History</Link></li>
+                        
+                        </>
                      }
 
                 </ul>

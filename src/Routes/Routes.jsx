@@ -69,7 +69,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
           element:<MyClasses></MyClasses>
         },
         {
-          path: 'payment',
+          path: 'payment/:id',
           element:<Payment></Payment>
         }
       ]
