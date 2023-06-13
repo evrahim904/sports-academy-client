@@ -47,7 +47,7 @@ const MyClasses = () => {
               <td>${cls.price}</td>
               <td>{cls.status}</td>
               <td>0</td>
-              <td></td>
+              <td>{cls.feedback}</td>
               <th>
                 <button className="btn btn-ghost btn-xs">update</button>
               </th>

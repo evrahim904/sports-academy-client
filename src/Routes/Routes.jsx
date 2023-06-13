@@ -17,6 +17,8 @@ import MyClasses from "../Pages/Dashboard/MyClassess/MyClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
+import AllClassFromInstructor from "../Pages/Dashboard/AllClassFromInstructor/AllClassFromInstructor";
+import Feedback from "../Pages/Dashboard/AllClassFromInstructor/Feedback";
 
 
 
@@ -56,6 +58,14 @@ import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
         {
           path:'selectedClass',
           element:<SelectedClass></SelectedClass>
+        },
+        {
+          path:'allClassInstructor',
+          element:<AllClassFromInstructor></AllClassFromInstructor>
+        },
+        {
+          path:'feedback',
+          element:<Feedback></Feedback>
         },
         {
           path: 'allUsers',

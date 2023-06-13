@@ -18,11 +18,11 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-60 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
                      {
                         isAdmin && <> <li><Link to="/"><FaHome></FaHome> Home</Link></li>
-                        <li><Link to="/dashboard/selectedClass"> <FaPeopleArrows></FaPeopleArrows>  Manage Classes</Link></li>
+                        <li><Link to="/dashboard/allClassInstructor"> <FaPeopleArrows></FaPeopleArrows>  Manage Classes</Link></li>
                         <li><Link to="/dashboard/allUsers"><FaUser></FaUser> Manage Users</Link></li></> 
                         ||
                         isInstructor && 

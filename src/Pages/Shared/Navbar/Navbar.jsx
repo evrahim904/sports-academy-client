@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/sport-35476.png'
 import useAuth from '../../../Hooks/useAuth';
-import useCart from '../../../Hooks/useCarts';
+
 const Navbar = () => {
     const { user, logOut } = useAuth();
-    const [cart] = useCart()
+   
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -20,7 +20,7 @@ const Navbar = () => {
 
             {
                 user && 
-                    < li > <Link to="/dashboard">Dashboard</Link></li>
+                    < li ><Link to="/dashboard">Dashboard</Link></li>
 
             }
         </>
