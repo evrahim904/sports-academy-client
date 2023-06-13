@@ -29,7 +29,7 @@ const Dashboard = () => {
                         <> <li><Link to="/"><FaHome></FaHome> Home</Link></li>
                         <li><Link to="/dashboard/addItem"><FaPeopleArrows></FaPeopleArrows> Add a Class</Link></li>
                         <li><Link to="/dashboard/myClasses"> <FaPeopleCarry></FaPeopleCarry> My Classes</Link></li>
-                        <li><Link to="/dashboard/enrolled"><FaWallet></FaWallet> Total Enrolled Students</Link></li>
+                        
                         
                         </> 
                         

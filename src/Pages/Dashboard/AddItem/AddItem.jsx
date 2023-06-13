@@ -4,13 +4,16 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AddItem = () => {
     const {user} = useAuth()
+    
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
     const [axiosSecure] = useAxiosSecure()
     const onSubmit = data => {
         console.log(data)
+        console.log(data)
         const newItem = {name: data.name, image: data.image ,instructorName: data.instructor, availableSeats: parseFloat(data.seats), price: parseFloat(data.price), email: data.email, status: data.status }
         axiosSecure.post('/classes', newItem)
         .then(data => {
+            reset()
             console.log('item', data.data)
         })
     }
@@ -74,6 +77,7 @@ const AddItem = () => {
                 </div>
               </div>
                 <input type="hidden" {...register("status", { required: true })} name="status" value="pending" />
+                {/* <input type="hidden" {...register("enrolled", { required: true })} name="status" value="0" /> */}
                 <input className="btn bg-orange-500 w-full btn-sm mt-4 " type="submit" value="add item" />
             </form>
         </div>

@@ -20,6 +20,7 @@ import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
 import AllClassFromInstructor from "../Pages/Dashboard/AllClassFromInstructor/AllClassFromInstructor";
 import Feedback from "../Pages/Dashboard/AllClassFromInstructor/Feedback";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
+import Extra from "../Components/Extra";
 
 
 
@@ -49,6 +50,10 @@ import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
         {
           path:'instructors',
           element:<Instructors></Instructors>
+        },
+        {
+          path: 'extra',
+          element: <Extra></Extra>
         }
       ]
     },

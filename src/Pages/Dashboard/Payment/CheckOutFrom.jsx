@@ -2,7 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import './CheckOutForam.css'
+// import './CheckOutForam.css'
 import Swal from "sweetalert2";
 
 const CheckOutFrom = ({ price, item }) => {
@@ -15,7 +15,7 @@ const CheckOutFrom = ({ price, item }) => {
     const [cardError, setCardError] = useState()
     const [clientSecret, setClientSecret] = useState()
     const [success, setSuccess] = useState('')
-    const [processing, setProcessing] = useState(true)
+    const [processing, setProcessing] = useState(false)
 
 
     useEffect(() => {
@@ -74,7 +74,7 @@ const CheckOutFrom = ({ price, item }) => {
             setCardError(confirmError.message)
         }
 
-        else {
+        
             setProcessing(false)
             console.log('[paymentIntent]', paymentIntent);
             setSuccess(paymentIntent.id)
@@ -94,6 +94,7 @@ const CheckOutFrom = ({ price, item }) => {
                     .then(res => {
 
                         console.log(res.data);
+                       
                         if (res.data.result.insertedId) {
 
                             Swal.fire({
@@ -109,7 +110,7 @@ const CheckOutFrom = ({ price, item }) => {
             }
 
 
-        }
+       
 
     }
 
@@ -133,7 +134,7 @@ const CheckOutFrom = ({ price, item }) => {
                 }}
             />
 
-            <button className="btn btn-success btn-sm text-center mb-5" type="submit" disabled={!stripe}>
+            <button className="btn btn-success btn-sm text-center mb-5" type="submit" disabled={!stripe || processing}>
                 Pay
             </button>
             {

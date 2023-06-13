@@ -46,9 +46,15 @@ const MyClasses = () => {
               <td>{cls.availableSeats}</td>
               <td>${cls.price}</td>
               <td>{cls.status}</td>
-              <td>0</td>
+              <td> 
+                 {
+                  cls.enrolled? cls.enrolled: 0
+                 }
+              </td>
               <td>{cls.feedback}</td>
               <th>
+                {/* todo add private student instructor */}
+                {/* todo update the class */}
                 <button className="btn btn-ghost btn-xs">update</button>
               </th>
             </tr> )}
