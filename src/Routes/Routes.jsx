@@ -19,6 +19,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
 import AllClassFromInstructor from "../Pages/Dashboard/AllClassFromInstructor/AllClassFromInstructor";
 import Feedback from "../Pages/Dashboard/AllClassFromInstructor/Feedback";
+import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 
 
 
@@ -69,7 +70,7 @@ import Feedback from "../Pages/Dashboard/AllClassFromInstructor/Feedback";
         },
         {
           path: 'allUsers',
-          element:<AllUsers></AllUsers>
+          element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
         },
         {
           path:'addItem',
@@ -82,6 +83,10 @@ import Feedback from "../Pages/Dashboard/AllClassFromInstructor/Feedback";
         {
           path: 'payment/:id',
           element:<Payment></Payment>
+        },
+        {
+            path: 'paymentHistory',
+            element: <PaymentHistory></PaymentHistory>
         },
         {
           path: 'enrolledClass',

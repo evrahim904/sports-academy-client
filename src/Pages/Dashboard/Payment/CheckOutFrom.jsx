@@ -14,8 +14,9 @@ const CheckOutFrom = ({ price, item }) => {
     const [axiosSecure] = useAxiosSecure()
     const [cardError, setCardError] = useState()
     const [clientSecret, setClientSecret] = useState()
+    const [success, setSuccess] = useState('')
     const [processing, setProcessing] = useState(true)
- 
+
 
     useEffect(() => {
         if (price) {
@@ -50,6 +51,7 @@ const CheckOutFrom = ({ price, item }) => {
             setCardError(error.message)
         } else {
             console.log('[PaymentMethod]', paymentMethod);
+
         }
         setProcessing(true)
         // confirm payment
@@ -71,11 +73,11 @@ const CheckOutFrom = ({ price, item }) => {
             console.log('[error]', confirmError);
             setCardError(confirmError.message)
         }
-         
+
         else {
             setProcessing(false)
             console.log('[paymentIntent]', paymentIntent);
-            
+            setSuccess(paymentIntent.id)
             if (paymentIntent.status === 'succeeded') {
                 const payment = {
                     email: user.email,
@@ -87,58 +89,26 @@ const CheckOutFrom = ({ price, item }) => {
                     className: item.name,
                     instructorName: item.instructorName,
                 };
-            
+
                 axiosSecure.post('/payment', payment)
                     .then(res => {
-                        
+
                         console.log(res.data);
                         if (res.data.result.insertedId) {
 
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your payment has been confirmed ',
+                                showConfirmButton: false,
+                                timer: 1500
 
-                        //     const selectedClass = classes.find(cls => cls._id === item.classId);
-                        //     axiosSecure.patch(`/classes/${selectedClass}`)
-                        // .then(data =>{
-                        //     console.log(data)
-                        //     if(data.modifiedCount){
-                             
-                        //         Swal.fire({
-                        //             position: 'top-end',
-                        //             icon: 'success',
-                        //             title: 'Your item has been selected',
-                        //             showConfirmButton: false,
-                        //             timer: 1500
-
-                        //         })
-                        //     }
-                        // })
-
-
+                            })
                         }
                     });
             }
 
 
-            // if (paymentIntent.status === 'succeeded') {
-            //     const payment =
-            //     {
-            //         email: user.email,
-            //         transactionId: paymentIntent.id,
-            //         price,
-            //         cartId : item._id,
-            //         date: new Date(),
-            //         classId:item.classId,
-            //         className:item.name,
-            //         instructorName:item.instructorName,
-                    
-            //     }
-            //     axiosSecure.post('/payment', payment)
-            //     .then(res =>{
-            //         console.log(res.data)
-            //         if(res.data.insertedId){
-            //             // dis
-            //         }
-            //     })
-            // }
         }
 
     }
@@ -163,11 +133,12 @@ const CheckOutFrom = ({ price, item }) => {
                 }}
             />
 
-            <button className="btn btn-success btn-sm text-center" type="submit" disabled={!stripe }>
+            <button className="btn btn-success btn-sm text-center mb-5" type="submit" disabled={!stripe}>
                 Pay
             </button>
             {
-                cardError && <p> {cardError} </p>
+                cardError && <p className="text-red-600"> {cardError} </p> ||
+                success && <p className="text-blue-600"> payment has been successfully paid from id: {success} </p>
             }
         </form>
     );

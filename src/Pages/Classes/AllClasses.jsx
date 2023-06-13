@@ -24,7 +24,7 @@ const AllClasses = ({ allClass }) => {
         console.log(item)
         if (user && user.email) {
             const cartItem = { classId: _id, image, name, instructorName, availableSeats, price, email: user.email }
-            fetch('http://localhost:5000/carts', {
+            fetch('https://sports-academy-server-evrahim904.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -43,7 +43,7 @@ const AllClasses = ({ allClass }) => {
                             timer: 1500
                         })
                         
-                        // fetch(`http://localhost:5000/classes/${item._id}`, {
+                        // fetch(`https://sports-academy-server-evrahim904.vercel.app/classes/${item._id}`, {
                         //     method: 'PATCH',
                         // })
                         // .then(res => res.json())

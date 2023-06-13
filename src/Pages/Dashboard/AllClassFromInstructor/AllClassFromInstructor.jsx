@@ -12,7 +12,7 @@ const AllClassFromInstructor = () => {
     })
 
     const handleApprove = item => {
-        fetch(`http://localhost:5000/classes/status/${item._id}`, {
+        fetch(`https://sports-academy-server-evrahim904.vercel.app/classes/status/${item._id}`, {
             method: 'PATCH',
         })
             .then(res => res.json())
@@ -31,7 +31,7 @@ const AllClassFromInstructor = () => {
     }
     const handleDeny = item => {
         console.log(item)
-        fetch(`http://localhost:5000/classes/deny/${item._id}`, {
+        fetch(`https://sports-academy-server-evrahim904.vercel.app/classes/deny/${item._id}`, {
             method: 'PATCH',
             body: JSON.stringify({ status: 'deny' }),
             headers: {
@@ -55,34 +55,7 @@ const AllClassFromInstructor = () => {
 
 
 
-    // const handleWrite = (event, item) => {
-    //     console.log(item)
-    //     event.preventDefault();
-    //     const feedback = event.target.feedback.value;
-
-    //     fetch(`http://localhost:5000/classes/feedback/${item._id}`, {
-    //         method: 'PATCH',
-    //         body: JSON.stringify({ feedback }),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             event.target.reset();
-    //             if (data.modifiedCount) {
-
-    //                 Swal.fire({
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: 'Feedback has been sent',
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 });
-    //             }
-    //         });
-    // };
-
+   
 
     return (
         <div className="max-w-screen-xl mx-auto">

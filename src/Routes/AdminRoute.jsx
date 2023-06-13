@@ -14,7 +14,7 @@ const AdminRoute = ({children}) => {
         return children
     }
     // todo 404 page will impliment
-    return <Navigate to="/login" state={{from:location}} replace></Navigate>
+    return <Navigate to="/ErrorPage" state={{from:location}} replace></Navigate>
 };
 
 export default AdminRoute;

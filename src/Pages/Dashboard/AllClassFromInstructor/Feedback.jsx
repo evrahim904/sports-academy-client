@@ -10,7 +10,7 @@ const Feedback = () => {
     const handle = from => {
         const feedback = feedbackRef.current.value;
 
-        fetch(`http://localhost:5000/classes/feedback/${from._id}`, {
+        fetch(`https://sports-academy-server-evrahim904.vercel.app/classes/feedback/${from._id}`, {
             method: 'PATCH',
             body: JSON.stringify({ feedback }),
             headers: {
