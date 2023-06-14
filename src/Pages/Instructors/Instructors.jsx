@@ -5,7 +5,7 @@ import Instructor from "./Instructor";
 const Instructors = () => {
     const [instructors , setInstructors] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/instructors')
+        fetch('https://sports-academy-server-evrahim904.vercel.app/instructors')
         .then(res => res.json())
         .then(data =>{
             const few = data.filter(i => i.role === 'instructor')

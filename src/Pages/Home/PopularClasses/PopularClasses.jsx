@@ -6,7 +6,7 @@ const PopularClasses = () => {
     const [classes , setClasses] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/classes')
+        fetch('https://sports-academy-server-evrahim904.vercel.app/classes')
         .then(res => res.json())
         .then(data =>{
             const popularClass = data.filter(p => p.status === 'approved')

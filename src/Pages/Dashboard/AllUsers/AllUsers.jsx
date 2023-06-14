@@ -28,7 +28,7 @@ const AllUsers = () => {
         })
     }
     const handleMakeInstructor = user=>{
-      fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+      fetch(`https://sports-academy-server-evrahim904.vercel.app/users/instructor/${user._id}`,{
         method: 'PATCH',
     })
     .then(res => res.json())

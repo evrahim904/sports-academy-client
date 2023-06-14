@@ -4,7 +4,7 @@ import Popular from "./Popular";
 const PopularInstructor = () => {
     const [popular, setPopular] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/instructors')
+        fetch('https://sports-academy-server-evrahim904.vercel.app/instructors')
         .then(res => res.json())
         .then(data =>{
             const instructor = data.filter(p => p.role === 'instructor')
