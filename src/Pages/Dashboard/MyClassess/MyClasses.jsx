@@ -51,7 +51,7 @@ const MyClasses = () => {
                   cls.enrolled? cls.enrolled: 0
                  }
               </td>
-              <td>{cls.feedback}</td>
+              <td>{cls.status === 'approved' ? '' :   cls.feedback}</td>
               <th>
                 {/* todo add private student instructor */}
                 {/* todo update the class */}

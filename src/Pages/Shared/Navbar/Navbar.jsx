@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/sport-35476.png'
 import useAuth from '../../../Hooks/useAuth';
+import './Navbar.css'
 // import useAdmin from '../../../Hooks/useAdmin';
 
 const Navbar = () => {
@@ -12,6 +13,10 @@ const Navbar = () => {
             .catch(error => console.log(error))
     }
 
+
+
+
+  
     const navInfo =
         <>
             <li><Link to="/">Home</Link></li>
@@ -26,6 +31,8 @@ const Navbar = () => {
                     // < li ><Link to={isAdmin ? "/dashboard/allClassInstructor" : "/dashboard/selectedClass"}  >Dashboard</Link></li> 
 
             }
+            <input type="checkbox" className="toggle toggle-md" checked />
+
         </>
     return (
         <div className="navbar bg-base-100">
