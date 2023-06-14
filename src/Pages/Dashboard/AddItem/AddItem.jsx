@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const AddItem = () => {
     const { user } = useAuth();
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [axiosSecure] = useAxiosSecure();
 
     const animationProps = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
@@ -105,7 +105,7 @@ const AddItem = () => {
                     </div>
                 </div>
                 <input type="hidden" {...register("status", { required: true })} name="status" value="pending" />
-                {/* <input type="hidden" {...register("enrolled", { required: true })} name="status" value="0" /> */}
+             
                 <input className="btn bg-orange-500 w-full btn-sm mt-4 " type="submit" value="add item" />
             </form>
 
