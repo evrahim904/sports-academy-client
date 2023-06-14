@@ -20,6 +20,7 @@ import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
 import AllClassFromInstructor from "../Pages/Dashboard/AllClassFromInstructor/AllClassFromInstructor";
 import Feedback from "../Pages/Dashboard/AllClassFromInstructor/Feedback";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
+import InstructorRoute from "./InstructorRoute";
 
 
 
@@ -48,10 +49,6 @@ import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
           element:<Classes></Classes>
         },
         {
-          path:'calass2',
-          element:<Classes></Classes>
-        },
-        {
           path:'instructors',
           element:<Instructors></Instructors>
         }
@@ -67,7 +64,7 @@ import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
         },
         {
           path:'allClassInstructor',
-          element:<AllClassFromInstructor></AllClassFromInstructor>
+          element:<AdminRoute><AllClassFromInstructor></AllClassFromInstructor></AdminRoute>
         },
         {
           path:'feedback',

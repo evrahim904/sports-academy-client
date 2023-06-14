@@ -111,6 +111,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useSpring, animated } from "react-spring";
+import Swal from "sweetalert2";
 
 const AddItem = () => {
     const { user } = useAuth();
@@ -135,7 +136,16 @@ const AddItem = () => {
         };
         axiosSecure.post("/classes", newItem).then(data => {
             reset();
-            console.log("item", data.data);
+            console.log("item", data.data.insertedId);
+            if(data.data.insertedId){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your item has been added',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
         });
     };
 

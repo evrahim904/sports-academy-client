@@ -2,8 +2,8 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../Hooks/useCarts";
-// import useAdmin from "../../Hooks/useAdmin";
-// import useInstructor from "../../Hooks/useInstructor";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 
 const AllClasses = ({ allClass }) => {
@@ -13,10 +13,10 @@ const AllClasses = ({ allClass }) => {
     const [, refetch] = useCart()
     const navigate = useNavigate()
     const location = useLocation()
-    // todo
+   
      
-    // const [isAdmin] = useAdmin()
-    // const [isInstructor] = useInstructor()
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
     const cardStyles = {
         backgroundColor: availableSeats === 0 ? 'red' : 'white',
 
@@ -83,7 +83,7 @@ const AllClasses = ({ allClass }) => {
                         <div className=" font-semibold">Price: ${price}</div>
                     </div>
                     <div className="card-actions justify-end">
-                        <button onClick={() => handleAddToCart(allClass)} className="btn btn-primary btn-sm" disabled={availableSeats === 0}>select</button>
+                        <button onClick={() => handleAddToCart(allClass)} className="btn btn-primary btn-sm" disabled={availableSeats === 0 || isAdmin || isInstructor}>select</button>
                     </div>
                 </div>
 
