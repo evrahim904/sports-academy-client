@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "type": "Gym",
+      "name": "FitnessFirst gym",
+      "image": "https://resources.premierleague.com/photos/premierleague/photo/2018/06/21/7de126e2-0217-47c4-97e2-cb1c03c69d7f/EP-2.png?width=1400&height=800",
+      "location": "123 Main Street",
+      "facilities": ["Cardio Machines,", "Weightlifting Area,", "Group Exercise Classes"]
+    },
+    {
+      "id": 2,
+      "type": "Medical Camp",
+      "name": "Medical Camp",
+      "image": "https://www.ntu.edu.sg/images/default-source/pg-admissions/mask-group---2020-12-14t110804.591c6d81894-7b28-4b14-bcfa-30fd4bf2a848.jpg?sfvrsn=73e1704b_5",
+      "location": "789 Elm Avenue",
+      "facilities": ["Injury Assessment,", "Physical Therapy,", "Sports Rehabilitation"]
+    },
+    {
+      "id": 3,
+      "type": "Practice Field",
+      "name": "Practice Field",
+      "image": "https://www.recreationalgroup.com/cmss_files/imagelibrary/training-turf.jpg",
+      "location": "456 Oak Road",
+      "facilities": ["Grass Field,", "Track,", "Locker Rooms"]
+    }
+  ]
+  

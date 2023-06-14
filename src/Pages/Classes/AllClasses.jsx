@@ -2,8 +2,8 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../Hooks/useCarts";
-import useAdmin from "../../Hooks/useAdmin";
-import useInstructor from "../../Hooks/useInstructor";
+// import useAdmin from "../../Hooks/useAdmin";
+// import useInstructor from "../../Hooks/useInstructor";
 
 
 const AllClasses = ({ allClass }) => {
@@ -13,8 +13,10 @@ const AllClasses = ({ allClass }) => {
     const [, refetch] = useCart()
     const navigate = useNavigate()
     const location = useLocation()
-    const [isAdmin] = useAdmin()
-    const [isInstructor] = useInstructor()
+    // todo
+     
+    // const [isAdmin] = useAdmin()
+    // const [isInstructor] = useInstructor()
     const cardStyles = {
         backgroundColor: availableSeats === 0 ? 'red' : 'white',
 
@@ -43,24 +45,6 @@ const AllClasses = ({ allClass }) => {
                             timer: 1500
                         })
                         
-                        // fetch(`https://sports-academy-server-evrahim904.vercel.app/classes/${item._id}`, {
-                        //     method: 'PATCH',
-                        // })
-                        // .then(res => res.json())
-                        // .then(data =>{
-                        //     console.log(data)
-                        //     if(data.modifiedCount){
-                        //         refetch()
-                        //         Swal.fire({
-                        //             position: 'top-end',
-                        //             icon: 'success',
-                        //             title: 'Your item has been selected',
-                        //             showConfirmButton: false,
-                        //             timer: 1500
-
-                        //         })
-                        //     }
-                        // })
 
                     }
                 })
@@ -85,7 +69,7 @@ const AllClasses = ({ allClass }) => {
     }
     return (
 
-        <div style={cardStyles} className="card w-96 bg-base-100 shadow-xl">
+        <div style={cardStyles} className="card w-96 max-h-96 bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
@@ -99,7 +83,7 @@ const AllClasses = ({ allClass }) => {
                         <div className=" font-semibold">Price: ${price}</div>
                     </div>
                     <div className="card-actions justify-end">
-                        <button onClick={() => handleAddToCart(allClass)} className="btn btn-primary btn-sm" disabled={availableSeats === 0 || isAdmin || isInstructor}>select</button>
+                        <button onClick={() => handleAddToCart(allClass)} className="btn btn-primary btn-sm" disabled={availableSeats === 0}>select</button>
                     </div>
                 </div>
 

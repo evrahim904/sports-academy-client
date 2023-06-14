@@ -10,7 +10,7 @@ const AddItem = () => {
     const onSubmit = data => {
         console.log(data)
         console.log(data)
-        const newItem = {name: data.name, image: data.image ,instructorName: data.instructor, availableSeats: parseFloat(data.seats), price: parseFloat(data.price), email: data.email, status: data.status }
+        const newItem = {name: data.name, image: data.image , instructorImage: user.photoURL , instructorName: data.instructor, availableSeats: parseFloat(data.seats), price: parseFloat(data.price), email: data.email, status: data.status }
         axiosSecure.post('/classes', newItem)
         .then(data => {
             reset()
