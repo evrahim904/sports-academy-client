@@ -3,10 +3,12 @@ import logo from '../../../assets/sport-35476.png'
 import useAuth from '../../../Hooks/useAuth';
 import './Navbar.css'
 import useAdmin from '../../../Hooks/useAdmin';
+import useInstructor from '../../../Hooks/useInstructor';
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
-//    const [isAdmin] = useAdmin()
+       const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -16,23 +18,40 @@ const Navbar = () => {
 
 
 
-  
+
     const navInfo =
         <>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/classes">Classes</Link></li>
             <li><Link to="/instructors">Instructors</Link></li>
-
+       
 
             {
-                user && 
-                <li><Link to="/dashboard">dashboard</Link></li>
+                user  && isAdmin &&
+                // <li><Link to="/dashboard">dashboard</Link></li>
 
-                    // < li ><Link to={isAdmin && "/dashboard/allClassInstructor" || "/dashboard/addItem"}  >Dashboard</Link></li> 
+                < li ><Link to={ isAdmin && "/dashboard/allClassInstructor" || "/dashboard" }  >Dashboard</Link></li> 
 
-                    
+
             }
-           
+
+            {
+                user  && !isAdmin && !isInstructor&&
+                // <li><Link to="/dashboard">dashboard</Link></li>
+
+                < li ><Link to= "/dashboard/selectedClass"   >Dashboard</Link></li> 
+
+
+            }
+            {
+                user && isInstructor &&
+                // <li><Link to="/dashboard">dashboard</Link></li>
+
+                < li ><Link to={ isInstructor && "/dashboard/addItem" ||"/dashboard/selectedClass" }  >Dashboard</Link></li> 
+
+
+            }
+
 
         </>
     return (
@@ -61,7 +80,7 @@ const Navbar = () => {
                     </Link>
                     <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
                         <div className=" rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-10 " >
-                            <img  src={user.photoURL} />
+                            <img src={user.photoURL} />
                         </div>
                     </div>
                 </div>
