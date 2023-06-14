@@ -7,8 +7,8 @@ import useInstructor from '../../../Hooks/useInstructor';
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
-       const [isAdmin] = useAdmin()
-    const [isInstructor] = useInstructor()
+    //    const [isAdmin] = useAdmin()
+    // const [isInstructor] = useInstructor()
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -27,27 +27,10 @@ const Navbar = () => {
        
 
             {
-                user  && isAdmin &&
-                // <li><Link to="/dashboard">dashboard</Link></li>
+                user  && 
+                <li><Link to="/dashboard">dashboard</Link></li>
 
-                < li ><Link to={ isAdmin && "/dashboard/allClassInstructor" || "/dashboard" }  >Dashboard</Link></li> 
-
-
-            }
-
-            {
-                user  && !isAdmin && !isInstructor&&
-                // <li><Link to="/dashboard">dashboard</Link></li>
-
-                < li ><Link to= "/dashboard/selectedClass"   >Dashboard</Link></li> 
-
-
-            }
-            {
-                user && isInstructor &&
-                // <li><Link to="/dashboard">dashboard</Link></li>
-
-                < li ><Link to={ isInstructor && "/dashboard/addItem" ||"/dashboard/selectedClass" }  >Dashboard</Link></li> 
+                // < li ><Link to={ isAdmin && "/dashboard/allClassInstructor" || "/dashboard" }  >Dashboard</Link></li> 
 
 
             }
