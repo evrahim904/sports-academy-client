@@ -28,7 +28,7 @@ const Navbar = () => {
                 user && 
                 <li><Link to="/dashboard">dashboard</Link></li>
 
-                    // < li ><Link to={isAdmin && "/dashboard/allClassInstructor" || "/dashboard"}  >Dashboard</Link></li> 
+                    // < li ><Link to={isAdmin && "/dashboard/allClassInstructor" || "/dashboard/addItem"}  >Dashboard</Link></li> 
 
                     
             }

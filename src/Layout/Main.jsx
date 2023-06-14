@@ -24,12 +24,12 @@ const Main = () => {
   };
 
   return (
-    <div style={themeStyles[theme]}>
+    <div style={themeStyles[theme]} className="relative">
       <Navbar></Navbar>
       <input
         onChange={toggleTheme}
         type="checkbox"
-        className="toggle toggle-md"
+        className="toggle toggle-md absolute right-60 top-5"
       />
       <Outlet></Outlet>
       <Footer></Footer>

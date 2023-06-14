@@ -15,7 +15,7 @@ const Banner = () => {
         naturalSlideHeight={67}
         totalSlides={4}
       >
-        <Slider className='relative'>
+        <Slider className='relative mt-5'>
            
           <Slide index={0}>
           <div className='absolute top-1/3 text-white'>
