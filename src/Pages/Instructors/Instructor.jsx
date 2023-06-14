@@ -9,12 +9,7 @@ const Instructor = ({ instructor }) => {
                 <h2 className="card-title">Name: {name}</h2>
                 <p>Email: {email}</p>
 
-                {/* 
-                <p>class taken: {numberOfClassesTaken}</p>
-                <p>class name:{classesTaken[0]} <br /> {classesTaken[1]} <br /> {classesTaken[2]}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">see classes</button>
-                </div> */}
+               
             </div>
         </div>
     );
