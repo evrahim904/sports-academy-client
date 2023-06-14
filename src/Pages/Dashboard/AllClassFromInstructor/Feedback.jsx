@@ -36,7 +36,7 @@ const Feedback = () => {
             <h3 className="text-center uppercase mb-3">write your feedback</h3>
             <div>
                 <input type="text" className="input input-bordered input-info " ref={feedbackRef} />
-                <button className="" onClick={() => handle(from)}> send feedback</button>
+                <button className="ms-6 btn btn-sm bg-sky-600" onClick={() => handle(from)}> send feedback</button>
             </div>
         </div>
     );
