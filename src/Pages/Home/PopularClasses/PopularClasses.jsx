@@ -9,8 +9,8 @@ const PopularClasses = () => {
         fetch('https://sports-academy-server-evrahim904.vercel.app/classes')
         .then(res => res.json())
         .then(data =>{
-            const popularClass = data.filter(p => p.status === 'approved')
-            const limitedClasses = popularClass.slice(0, 6);
+            const approved = data.filter(a => a.status === 'approved')
+            const limitedClasses = approved.slice(0, 6);
             setClasses(limitedClasses)
         })
     },[])

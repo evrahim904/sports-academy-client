@@ -8,7 +8,8 @@ const Classes = () => {
         fetch('https://sports-academy-server-evrahim904.vercel.app/classes')
         .then(res => res.json())
         .then(data =>{
-            setClasses(data)
+            const approved = data.filter(a => a.status === 'approved')
+            setClasses(approved)
         })
     },[])
     return (
