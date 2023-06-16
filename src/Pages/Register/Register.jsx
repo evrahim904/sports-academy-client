@@ -107,7 +107,7 @@ const Register = () => {
                             {errors.password?.type === 'pattern' && <p className="text-orange-500">password must have one uppercase and one special characters</p>}
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary" type="submit" value="Login" />
+                            <input className="btn btn-primary" type="submit" value="Register" />
                         </div>
                     </form>
                     <p className="mb-5 text-center">already have an account? please <Link to="/login"> <u className="text-primary">login</u></Link> </p>
